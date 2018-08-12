@@ -32,7 +32,7 @@ public class StudentController {
 	 *
 	 * @author zhengnan
 	 */
-	@RequestMapping("login/{age}")
+	@RequestMapping(value="login/{age}") //可以不带/，可以加上value=
 	public String login(String name,@PathVariable("age") String age) {
 		System.out.println(name+"="+age);
 		return "main";
@@ -46,7 +46,7 @@ public class StudentController {
 	 *
 	 * @author zhengnan
 	 */
-	@RequestMapping("suser")
+	@RequestMapping("/suser") //可以带上/,可以省略value=
 	public String sUser(Suser user,HttpServletRequest req) {
 		System.out.println(user.getKemu()+":"+user.getScore()+":"+user.getCtime());
 		System.out.println(req.getRemoteAddr()+":"+req.getRemotePort());
@@ -60,7 +60,7 @@ public class StudentController {
 	 *
 	 * @author zhengnan
 	 */
-	@RequestMapping("json")
+	@RequestMapping(value= {"json","otherPath"}) //可以把多个路径都映射到这个方法
 	@ResponseBody
 	public JSONObject json(String name) {
 		JSONObject r = new JSONObject();
